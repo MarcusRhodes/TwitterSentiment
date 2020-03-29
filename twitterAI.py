@@ -103,13 +103,13 @@ def decode_sentiment(label):
     return decode_map[int(label)]
 
 df.target = df.target.apply(lambda x: decode_sentiment(x))
-
+"""
 target_cnt = Counter(df.target)
 
 plt.figure(figsize=(16,8))
 plt.bar(target_cnt.keys(), target_cnt.values())
 plt.title("Dataset labels distribuition")
-
+"""
 #preprocessing the data!
 stop_words = stopwords.words("english")
 stemmer = SnowballStemmer("english")
@@ -172,7 +172,7 @@ y_test = encoder.transform(df_test.target.tolist())
 
 y_train = y_train.reshape(-1,1)
 y_test = y_test.reshape(-1,1)
-
+"""
 print("y_train",y_train.shape)
 print("y_test",y_test.shape)
 
@@ -183,7 +183,7 @@ print("x_test", x_test.shape)
 print("y_test", y_test.shape)
 
 y_train[:10]
-
+"""
 embedding_matrix = np.zeros((vocab_size, W2V_SIZE))
 for word, i in tokenizer.word_index.items():
   if word in w2v_model.wv:
@@ -218,7 +218,7 @@ score = model.evaluate(x_test, y_test, batch_size=BATCH_SIZE)
 print()
 print("ACCURACY:",score[1])
 print("LOSS:",score[0])
-
+"""
 acc = history.history['acc']
 val_acc = history.history['val_acc']
 loss = history.history['loss']
@@ -239,7 +239,7 @@ plt.title('Training and validation loss')
 plt.legend()
  
 plt.show()
-
+"""
 def decode_sentiment(score, include_neutral=True):
     if include_neutral:        
         label = NEUTRAL
@@ -271,10 +271,14 @@ import os
 import twitter
 
 # initialize api instance
-twitter_api = twitter.Api(consumer_key=os.environ.get("YOUR_CONSUMER_KEY"),
+"""twitter_api = twitter.Api(consumer_key=os.environ.get("YOUR_CONSUMER_KEY"),
                         consumer_secret=os.environ.get("YOUR_CONSUMER_SECRET"),
                         access_token_key=os.environ.get("YOUR_ACCESS_TOKEN_KEY"),
-                        access_token_secret=os.environ.get("YOUR_ACCESS_TOKEN_SECRET"))
+                        access_token_secret=os.environ.get("YOUR_ACCESS_TOKEN_SECRET"))"""
+twitter_api = twitter.Api(consumer_key='JeptZDD3Xp2tf50NtFP8rfpV3',
+                        consumer_secret='RUq7EsctYyVFsPJQXHNvdjKzSD9THNJSfTOW28mKkaJ7vli0rH',
+                        access_token_key='822220177332764673-tghh0dMgVaArZSHIKz1Qt1JVkfPneUN',
+                        access_token_secret='k96sqMVpHgI8PaLlNgSfLQ2wLz4m3MuJYWxlXUzJ40V6H')
 
 # test authentication
 print(twitter_api.VerifyCredentials())
