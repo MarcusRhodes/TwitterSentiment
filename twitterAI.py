@@ -271,14 +271,10 @@ import os
 import twitter
 
 # initialize api instance
-"""twitter_api = twitter.Api(consumer_key=os.environ.get("YOUR_CONSUMER_KEY"),
+twitter_api = twitter.Api(consumer_key=os.environ.get("YOUR_CONSUMER_KEY"),
                         consumer_secret=os.environ.get("YOUR_CONSUMER_SECRET"),
                         access_token_key=os.environ.get("YOUR_ACCESS_TOKEN_KEY"),
-                        access_token_secret=os.environ.get("YOUR_ACCESS_TOKEN_SECRET"))"""
-twitter_api = twitter.Api(consumer_key='JeptZDD3Xp2tf50NtFP8rfpV3',
-                        consumer_secret='RUq7EsctYyVFsPJQXHNvdjKzSD9THNJSfTOW28mKkaJ7vli0rH',
-                        access_token_key='822220177332764673-tghh0dMgVaArZSHIKz1Qt1JVkfPneUN',
-                        access_token_secret='k96sqMVpHgI8PaLlNgSfLQ2wLz4m3MuJYWxlXUzJ40V6H')
+                        access_token_secret=os.environ.get("YOUR_ACCESS_TOKEN_SECRET"))
 
 # test authentication
 print(twitter_api.VerifyCredentials())
